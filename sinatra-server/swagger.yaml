@@ -1,0 +1,54 @@
+---
+swagger: "2.0"
+info:
+  version: "0.0.0"
+  title: "Simple API"
+paths:
+  /hello/{name}:
+    get:
+      description: "greets the lucky user"
+      operationId: "greetUser"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "name"
+        in: "path"
+        description: "name of user to greet"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "hello responses"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+        default:
+          description: "error"
+  /sum/{first}/{second}:
+    get:
+      description: "sums two numbers"
+      operationId: "sumTwo"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "first"
+        in: "path"
+        description: "first number"
+        required: true
+        type: "integer"
+      - name: "second"
+        in: "path"
+        description: "second number"
+        required: true
+        type: "integer"
+      responses:
+        200:
+          description: "result of the summation"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+        default:
+          description: "error"
+definitions:
+  inline_response_200:
+    properties:
+      message:
+        type: "string"
